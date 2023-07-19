@@ -7,13 +7,17 @@ import { CATEGORIES, TASKS } from "../data";
 console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
+
+
 function App() {
+
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
-      <NewTaskForm />
-      <TaskList />
+      {/* {categoryItems} */}
+      <NewTaskForm  tasks={TASKS} categories ={CATEGORIES} />
+      <CategoryFilter tasks={TASKS} categories ={CATEGORIES} />
     </div>
   );
 }
