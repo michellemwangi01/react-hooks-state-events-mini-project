@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import GetMeTheForm from "./GetMeTheForm";
 
 function NewTaskForm({ categories,onTaskFormSubmit }) {
 
@@ -10,7 +9,6 @@ function NewTaskForm({ categories,onTaskFormSubmit }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
     onTaskFormSubmit(newTaskItem)
   };
 

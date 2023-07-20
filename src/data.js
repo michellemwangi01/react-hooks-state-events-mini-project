@@ -30,3 +30,11 @@ export const TASKS = [
     category: "Misc",
   },
 ];
+
+function updateTASKS(){
+  TASKS.push({
+  text: "Get an   KAHDJH",
+  category: "MoOOOOney",
+})
+}
+

@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid"; 
 import Task from './Task';
-import NewTaskForm from "./NewTaskForm";
 
-function TaskList({ tasks, setTasks, categories, categorySelected }) {
-  const filteredTasks = categorySelected === "All" ? tasks : tasks.filter(task => task.category === categorySelected);
-  //  const [tasks, setTasks] = useState([tasks]);
-  // Define the function to update the tasks state
-  // const getMeTheForm = (myObject) => {
-  //   console.log(myObject);
-  //   //setTasks([...tasks, myObject]); // Update the tasks state with the new task
-  // };
+function TaskList({ tasks,  categorySelected}) {
+  const [tasksWithIDs, setTasksWithIDs] = useState([])
+  const [filteredTasks, setFilteredTasks] = useState([])
 
-  const listItems = filteredTasks.map((task, index) => (
-    <Task task={task} key={index}>{task.text}</Task>
+  useEffect(()=>{
+    const tasksWithIds = tasks.map((task) => ({ ...task, id: uuidv4() }));
+    setTasksWithIDs(tasksWithIds)
+    console.log(tasksWithIDs);  
+    setFilteredTasks(categorySelected === "All" ? tasksWithIds : tasksWithIds.filter(task => task.category === categorySelected))
+    
+  },[])
+  
+  const listItems = filteredTasks.map((task) => (
+    <Task OnDeleteTaskItem={OnDeleteTaskItem} task={task} key={task.id}>{task.text}</Task>
   ));
+
+  function OnDeleteTaskItem (deleteTaskItemID) {
+    console.log(deleteTaskItemID);
+    setFilteredTasks( filteredTasks.filter(task => task.id !== deleteTaskItemID))
+    // const remaningTasks =
+    console.log(filteredTasks);
+    
+   }
 
   return (
     <div className="tasks">
-      <NewTaskForm setTasks={setTasks} tasks={tasks} categories={categories}  />
       <ul>
         {listItems}
       </ul>
