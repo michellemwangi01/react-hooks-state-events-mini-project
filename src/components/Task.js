@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({task, OnDeleteTaskItem}) {
+function Task({task, text,category, OnDeleteTaskItem}) {
 
   const onDeleteHandler = ()=>{
     console.log(task.id);
@@ -9,8 +9,8 @@ function Task({task, OnDeleteTaskItem}) {
 
   return (
     <div className="task">
-      <div className="label">{task.text}</div>
-      <div className="text">{task.category}</div>
+      <div className="label">{text}</div>
+      <div className="text">{category}</div>
       <button 
         key={task.id} 
         onClick={onDeleteHandler} 

@@ -18,12 +18,12 @@ function App() {
    }
  
 
-   function onDeleteTaskItem (deleteTaskItemID) {
-    console.log(deleteTaskItemID);
-    // const remaningTasks = tasks.filter(task => task.id !== deleteTaskItemID)
-    // console.log(remaningTasks);
-    setTasks(tasks.filter((task) => task.id !== deleteTaskItemID));
-   }
+  //  function onDeleteTaskItem (deleteTaskItemID) {
+  //   console.log(deleteTaskItemID);
+  //   // const remaningTasks = tasks.filter(task => task.id !== deleteTaskItemID)
+  //   // console.log(remaningTasks);
+  //   setTasks(tasks.filter((task) => task.id !== deleteTaskItemID));
+  //  }
 
   return (
     <div className="App">

@@ -10,6 +10,10 @@ function NewTaskForm({ categories,onTaskFormSubmit }) {
   const submitHandler = (e) => {
     e.preventDefault();
     onTaskFormSubmit(newTaskItem)
+    setNewTaskItem({
+      text: "",
+    category: ""
+    })
   };
 
   const inputHandler = (e) => {
@@ -26,7 +30,7 @@ function NewTaskForm({ categories,onTaskFormSubmit }) {
       <form onSubmit={submitHandler} className="new-task-form">
         <label>
           Details
-          <input onChange={inputHandler} type="text" name="text" />
+          <input value={newTaskItem.text} onChange={inputHandler} type="text" name="text" required/>
         </label>
         <label>
           Category
